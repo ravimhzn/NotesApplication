@@ -19,8 +19,7 @@ class DateUtilsTest {
         testReporter: TestReporter
     ) {
         assertEquals(months[m], getMonthFromNumber(monthNumbers[m]))
-        System.out.println("Success")
-        System.out.println("${monthNumbers[m]} : ${months[m]}")
-
+        println("Success")
+        println("${monthNumbers[m]} : ${months[m]}")
     }
 }

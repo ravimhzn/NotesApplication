@@ -1,5 +1,6 @@
 package com.ravimhzn.mynotes.models
 
+import com.ravimhzn.mynotes.util.TestUtil
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -7,6 +8,8 @@ class NoteTest {
 
     var TIMESTAMP1: String = "05-2020"
     var TIMESTAMP2: String = "05-2019"
+
+//    var testUtil: Int = TestUtil.NOTE//test-common directory test
 
     /**
      * Compare Two equal notes

@@ -1,12 +1,13 @@
-package com.ravimhzn.mynotes.dummy_practice
+package com.ravimhzn.mynotes.dummy
 
 fun main(args: Array<String>) {
-    filtering()
+    //filtering()
+    proFiltering()
 }
 
 fun filtering() {
     val numStrings = listOf("One", "Two", "Three", "Four")
-    val longerThan3 = numStrings.filter{ it.length > 3 }
+    val longerThan3 = numStrings.filter { it.length > 3 }
     println(longerThan3)
 
     /**
@@ -19,4 +20,15 @@ fun filtering() {
     println(numberMap)
 
     println(numberMap.filter { (k, v) -> v > 10 })
+}
+
+fun proFiltering() {
+    var a = listOf(5, 6, 7)
+
+    var m = a.map { it * 5 }
+    println(m)
+    var ab = m.filter { it > 32 }
+    println(ab)
+//        .map { it * 5 }
+//        .filter { it > 25 }
 }

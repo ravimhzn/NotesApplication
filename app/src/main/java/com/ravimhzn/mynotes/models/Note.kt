@@ -1,55 +1,30 @@
 package com.ravimhzn.mynotes.models
 
-import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 import org.jetbrains.annotations.NotNull
 
 /**
  * This model class will create our database table with ROOM
  */
 
+@Parcelize //This annotation will take care of Parcelization
 @Entity(tableName = "notes")
 data class Note(
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
-    @NotNull @ColumnInfo(name = "title") var title: String?,
-    @ColumnInfo(name = "content") var content: String?,
-    @ColumnInfo(name = "timestamp") var timestamp: String?
-) : Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readInt(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString()
-    ) {
-    }
+    var id: Int = 0,
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
-        parcel.writeString(title)
-        parcel.writeString(content)
-        parcel.writeString(timestamp)
-    }
+    @NotNull
+    @ColumnInfo(name = "title")
+    var title: String,
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    @ColumnInfo(name = "content")
+    var content: String,
 
-    companion object CREATOR : Parcelable.Creator<Note> {
-        override fun createFromParcel(parcel: Parcel): Note {
-            return Note(parcel)
-        }
+    @ColumnInfo(name = "timestamp")
+    var timestamp: String
 
-        override fun newArray(size: Int): Array<Note?> {
-            return arrayOfNulls(size)
-        }
-    }
-
-//    override fun equals(other: Any?): Boolean {
-//        var n: Note = other as Note
-//        return n.id == id && n.title == title && n.content == content
-//    }
-}
+) : Parcelable

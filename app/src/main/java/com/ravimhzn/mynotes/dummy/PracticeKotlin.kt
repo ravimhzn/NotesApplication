@@ -1,4 +1,4 @@
-package com.ravimhzn.mynotes.dummy_practice
+package com.ravimhzn.mynotes.dummy
 
 
 fun main(args: Array<String>) {

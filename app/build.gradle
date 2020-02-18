@@ -16,12 +16,23 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
     }
 }
 
@@ -66,12 +77,12 @@ dependencies {
 
     // Dagger2 core
     implementation "com.google.dagger:dagger:$dagger_version"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     // Dagger Android
     implementation "com.google.dagger:dagger-android:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
     def material_version = "1.0.0"
     implementation "com.google.android.material:material:$material_version"
@@ -79,14 +90,13 @@ dependencies {
     //Room
     def room_version = "2.2.3"
     implementation "androidx.room:room-runtime:$room_version"
-    //annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     // optional - RxJava support for Room
     implementation "androidx.room:room-rxjava2:$room_version"
 
 
     // ViewModel and LiveData
-    def lifecycle_version = '2.2.0'
+    def lifecycle_version = '2.1.0-alpha04'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
